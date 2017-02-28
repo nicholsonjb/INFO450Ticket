@@ -10,11 +10,11 @@ class Ticket
 {
 	static int IDGenerator;
 	int ID;
-	char ticketStatus;
-	char ticketIssueType;
+	char ticketStatus[50];
+	char ticketIssueType[50];
 	int ticketPriority;
-	char name;
-	char ticketDescription;
+	char name[50];
+	char ticketDescription[500];
 public:
 
 	Ticket();
@@ -43,6 +43,11 @@ int Ticket::getID()
 void Ticket::CaptureTicket()
 {
 	cout << "Enter Customer Name: " << endl;
+	gets_s(name);
+	cout << "enter ticket status: " << endl;
+	gets_s(ticketStatus);
+	cout << "E"
+
 }
 
 
