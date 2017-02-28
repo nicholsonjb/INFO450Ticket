@@ -17,18 +17,39 @@ class Ticket
 	char ticketDescription;
 public:
 
-	ticket();
+	Ticket();
 	int getID();
-	int CaptureTicket();
+	void CaptureTicket();
 	void ShowTicket();
 	void CloseTicket();
 
 
 };
 
+//Ticket IDGenerator
+int Ticket::IDGenerator = 1;
+
+Ticket::Ticket()
+{
+	ID = IDGenerator++;
+}
+
+int Ticket::getID()
+{
+	return ID;
+}
+
+//Metod to CaptureTicket Info
+void Ticket::CaptureTicket()
+{
+	cout << "Enter Customer Name: " << endl;
+}
+
 
 int main()
 {
+
+	
     return 0;
 }
 
