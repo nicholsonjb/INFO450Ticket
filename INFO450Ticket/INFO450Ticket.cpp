@@ -6,6 +6,26 @@
 #include <iostream>
 using namespace std;
 
+class Ticket
+{
+	static int IDGenerator;
+	int ID;
+	char ticketStatus;
+	char ticketIssueType;
+	int ticketPriority;
+	char name;
+	char ticketDescription;
+public:
+
+	ticket();
+	int getID();
+	int CaptureTicket();
+	void ShowTicket();
+	void CloseTicket();
+
+
+};
+
 
 int main()
 {
