@@ -39,7 +39,7 @@ int Ticket::getID()
 	return ID;
 }
 
-//Metod to CaptureTicket Info
+//Method to CaptureTicket Info
 void Ticket::CaptureTicket()
 {
 
@@ -56,6 +56,7 @@ void Ticket::CaptureTicket()
 
 }
 
+//Method to show ticket info
 void Ticket::ShowTicket()
 {
 	
