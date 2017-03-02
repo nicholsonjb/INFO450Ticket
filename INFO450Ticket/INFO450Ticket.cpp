@@ -136,8 +136,9 @@ int main()
 		 {
 			 systemTickets[i].ShowTicket();
 		 }
+		 
 		 systemTickets[0].CloseTicket();
 	 } while ((ans != 'Y') && (ans != 'N') && (ans != 'y') && (ans != 'n'));
-	
+	 
 	return 0;
 }
