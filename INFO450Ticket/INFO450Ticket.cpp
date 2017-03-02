@@ -116,15 +116,13 @@ void Ticket::CloseTicket()
 
 const int MAXTICKETS = 100;
 int totalTickets = 0;
+char ans;
+
 int main()
 {
 	
-	
-	
 	Ticket systemTickets[MAXTICKETS];
 	
-
-	 char ans;
 	 
 	 do {
 		 cout << "Open new ticket ? enter Y to continue " << endl;
@@ -133,7 +131,6 @@ int main()
 		 cin.ignore();
 		 totalTickets++;
 
-	 
 		
 	for ( int i = 0; i < totalTickets ; i++ )
 		 { 	
@@ -146,7 +143,7 @@ int main()
 		 }
 		
 		 systemTickets[0].CloseTicket();
-	 } while ((ans != 'Y') && (ans != 'y'));
+	 } while (ans != 'Y' && ans != 'y');
 		 
 	
 	return 0;
