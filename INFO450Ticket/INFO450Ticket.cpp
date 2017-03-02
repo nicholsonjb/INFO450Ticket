@@ -118,7 +118,8 @@ int main()
 	
 	
 	Ticket systemTickets[TICKETNUMBER];
-	 int idCaptured = systemTickets->getID();
+	int iDIndcator = systemTickets->getID();
+
 	 char ans;
 	 
 	 do {
@@ -127,18 +128,19 @@ int main()
 		 cin.clear();
 		 cin.ignore();
 
-		 for ( int i = 0; i < idCaptured; i++ )
+		 for ( int i = 0; i < iDIndcator; i++ )
 		 { 	
 		 systemTickets[i].CaptureTicket();
 		 }
-		 
-		 for (int i = 0; i < idCaptured; i++)
+		
+		 for (int i = 0; i < iDIndcator; i++)
 		 {
 			 systemTickets[i].ShowTicket();
 		 }
-		 
+		
 		 systemTickets[0].CloseTicket();
-	 } while ((ans != 'Y') && (ans != 'N') && (ans != 'y') && (ans != 'n'));
-	 
+
+		 } while ((ans != 'Y') && (ans != 'y'));
+	
 	return 0;
 }
