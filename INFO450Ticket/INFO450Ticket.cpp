@@ -10,10 +10,9 @@ class Ticket
 {
 	static int IDGenerator;
 	int ID;
-	string ticketStatus;
+	char ticketStatus[50];
 	char ticketIssueType[50];
 	int ticketPriority;
-	int usersImpacted;
 	char name[50];
 	char ticketDescription[500];
 public:
@@ -41,19 +40,15 @@ int Ticket::getID()
 	return ID;
 }
 
-//Metod to CaptureTicket Info
+//Method to CaptureTicket Info
 void Ticket::CaptureTicket()
 {
 	cout << "Enter Customer Name: " << endl;
-		gets_s(name);
-	cout << "Issue type: Issue Type? S=Server, A=Application, C=aCcess " << endl;
-		gets_s(ticketIssueType);
-	cout << "Description of Issue? " << endl;
-		gets_s(ticketDescription);
-	cout << "How many users impacted? " << endl;
-		cin >> usersImpacted;
-	cout << "Ticket status: " << ticketStatus << endl;
-	
+	gets_s(name);
+	cout << "enter ticket status: " << endl;
+	gets_s(ticketStatus);
+	cout << "E"
+
 }
 
 
