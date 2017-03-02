@@ -114,14 +114,15 @@ void Ticket::CloseTicket()
 }
 
 
-const int TICKETNUMBER = 100;
+const int MAXTICKETS = 100;
+int totalTickets = 0;
 int main()
 {
 	
 	
 	
-	Ticket systemTickets[TICKETNUMBER];
-	int iDIndcator = systemTickets->getID();
+	Ticket systemTickets[MAXTICKETS];
+	
 
 	 char ans;
 	 
@@ -130,20 +131,23 @@ int main()
 		 cin >> ans;
 		 cin.clear();
 		 cin.ignore();
+		 totalTickets++;
 
-		 for ( int i = 0; i < iDIndcator; i++ )
+	 
+		
+	for ( int i = 0; i < totalTickets ; i++ )
 		 { 	
 		 systemTickets[i].CaptureTicket();
 		 }
 		
-		 for (int i = 0; i < iDIndcator; i++)
+		 for (int i = 0; i < totalTickets ; i++)
 		 {
 			 systemTickets[i].ShowTicket();
 		 }
 		
 		 systemTickets[0].CloseTicket();
-
-		 } while ((ans != 'Y') && (ans != 'y'));
+	 } while ((ans != 'Y') && (ans != 'y'));
+		 
 	
 	return 0;
 }
