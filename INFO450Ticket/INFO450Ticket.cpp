@@ -83,7 +83,6 @@ void Ticket::CaptureTicket()
 		{
 		ticketPriority = "HIGH";
 		}
-	cout << "Ticket status: " << ticketStatus << endl;
 	cout << "Your issue ID is : " << ID << endl;
 	cout << "--------------------------\n";
 	
@@ -120,12 +119,11 @@ int main()
 	
 	Ticket systemTickets[TICKETNUMBER];
 	 int idCaptured = systemTickets->getID();
-	 char answer;
-	
-
+	 char ans;
+	 
 	 do {
 		 cout << "Open new ticket ? enter Y to continue " << endl;
-		 cin >> answer;
+		 cin >> ans;
 		 cin.clear();
 		 cin.ignore();
 
@@ -133,13 +131,13 @@ int main()
 		 { 	
 		 systemTickets[i].CaptureTicket();
 		 }
-		 for ( int i = 0; i < idCaptured; i++)
-		 { 
-		systemTickets[i].ShowTicket();
+		 
+		 for (int i = 0; i < idCaptured; i++)
+		 {
+			 systemTickets[i].ShowTicket();
 		 }
-	 } while (answer !='y' || answer != 'Y');
-	 
-		systemTickets[0].CloseTicket();
+		 systemTickets[0].CloseTicket();
+	 } while ((ans != 'Y') && (ans != 'N') && (ans != 'y') && (ans != 'n'));
 	
 	return 0;
 }
