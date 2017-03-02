@@ -8,6 +8,7 @@ using namespace std;
 
 class Ticket
 {
+	
 	static int IDGenerator;
 	int ID;
 	string ticketStatus;
@@ -45,6 +46,8 @@ int Ticket::getID()
 //Metod to CaptureTicket Info
 void Ticket::CaptureTicket()
 {
+	
+		
 	cout << "Enter Customer Name: " << endl;
 	getline(cin,name);
 	cout << "Issue type: Issue Type? S=Server, A=Application, C=aCcess " << endl;
@@ -83,8 +86,9 @@ void Ticket::CaptureTicket()
 	cout << "Ticket status: " << ticketStatus << endl;
 	cout << "Your issue ID is : " << ID << endl;
 	cout << "--------------------------\n";
-	cin.clear();
-	cin.ignore();
+	
+	
+	
 }
 
 //Method of TicketDisplay
@@ -108,15 +112,34 @@ void Ticket::CloseTicket()
 }
 
 
-
+const int TICKETNUMBER = 100;
 int main()
 {
-	const int TICKETNUMBERS = 100;
-	Ticket systemTickets[TICKETNUMBERS];
 	
-	systemTickets[TICKETNUMBERS].CaptureTicket();
-	systemTickets[TICKETNUMBERS].ShowTicket();
-	/*systemTickets[0].CloseTicket();*/
+	
+	
+	Ticket systemTickets[TICKETNUMBER];
+	 int idCaptured = systemTickets->getID();
+	 char answer;
+	
+
+	 do {
+		 cout << "Open new ticket ? enter Y to continue " << endl;
+		 cin >> answer;
+		 cin.clear();
+		 cin.ignore();
+
+		 for ( int i = 0; i < idCaptured; i++ )
+		 { 	
+		 systemTickets[i].CaptureTicket();
+		 }
+		 for ( int i = 0; i < idCaptured; i++)
+		 { 
+		systemTickets[i].ShowTicket();
+		 }
+	 } while (answer !='y' || answer != 'Y');
+	 
+		systemTickets[0].CloseTicket();
+	
 	return 0;
 }
-
