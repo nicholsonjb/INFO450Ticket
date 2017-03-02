@@ -127,10 +127,10 @@ int main()
 	 do {
 		 cout << "Open new ticket ? enter Y to continue " << endl;
 		 cin >> ans;
-		 cin.clear();
-		 cin.ignore();
-		 totalTickets++;
-
+			totalTickets++;
+			cin.clear();
+			cin.ignore();
+			
 		
 	for ( int i = 0; i < totalTickets ; i++ )
 		 { 	
@@ -141,10 +141,10 @@ int main()
 		 {
 			 systemTickets[i].ShowTicket();
 		 }
-		
 		 systemTickets[0].CloseTicket();
-	 } while (ans != 'Y' && ans != 'y');
 		 
-	
+	 } while (ans != 'Y' || ans != 'y');
+		 
+	 
 	return 0;
 }
