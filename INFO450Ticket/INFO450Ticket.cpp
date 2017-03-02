@@ -84,7 +84,7 @@ void Ticket::CaptureTicket()
 		ticketPriority = "HIGH";
 		}
 	cout << "Your issue ID is : " << ID << endl;
-	cout << "--------------------------\n";
+	cout << "--------------------------\n\n";
 	
 	
 	
@@ -93,7 +93,9 @@ void Ticket::CaptureTicket()
 //Method of TicketDisplay
 void Ticket::ShowTicket()
 {
+	cout << "--------------------------\n";
 	cout << "Ticket Listing: " << endl;
+	cout << "--------------------------\n\n";
 	cout << "Ticket ID: " << ID << endl;
 	cout << "Type: " << issueType <<endl;
 	cout << "Status: " << ticketStatus << endl;
@@ -101,6 +103,7 @@ void Ticket::ShowTicket()
 	cout << "User: " << name << endl;
 	cout << "Users Impacted: " << usersImpacted << endl;
 	cout << "Priroity: " << ticketPriority << endl;
+	cout << "--------------------------\n\n";
 
 	
 }
