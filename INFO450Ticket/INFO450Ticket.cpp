@@ -48,7 +48,8 @@ void Ticket::CaptureTicket()
 {
 	
 		
-	
+	cout << "Enter Customer Name: " << endl;
+	getline(cin,name);
 	cout << "Issue type: Issue Type? S=Server, A=Application, C=aCcess " << endl;
 	getline(cin,ticketIssueType);
 		if (ticketIssueType == "S" || ticketIssueType =="s")
