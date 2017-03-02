@@ -10,9 +10,10 @@ class Ticket
 {
 	static int IDGenerator;
 	int ID;
-	char ticketStatus[50];
-	char ticketIssueType[50];
-	int ticketPriority;
+	string ticketStatus;
+	string ticketIssueType;
+	string ticketPriority;
+	int usersImpacted;
 	char name[50];
 	char ticketDescription[500];
 public:
@@ -40,22 +41,54 @@ int Ticket::getID()
 	return ID;
 }
 
-//Method to CaptureTicket Info
+//Metod to CaptureTicket Info
 void Ticket::CaptureTicket()
 {
 	cout << "Enter Customer Name: " << endl;
 	gets_s(name);
-	cout << "enter ticket status: " << endl;
-	gets_s(ticketStatus);
-	cout << "E"
-
+	cout << "Issue type: Issue Type? S=Server, A=Application, C=aCcess " << endl;
+	getline(cin,ticketIssueType);
+	cout << "Description of Issue? " << endl;
+	gets_s(ticketDescription);
+	cout << "How many users impacted? " << endl;
+	cin >> usersImpacted;
+		if (usersImpacted < 10)
+		{
+			ticketPriority = "Low";
+		}
+	if (usersImpacted >= 10 && usersImpacted < 50)
+	{
+		ticketPriority = "MED";
+	}
+	if (usersImpacted < 50)
+	{
+		ticketPriority = "HIGH";
+	}
+	cout << "Ticket status: " << ticketStatus << endl;
+	cout << "Your ID number is: " << ID << endl;
 }
+
+//Method of TicketDisplay
+void Ticket::ShowTicket()
+{
+	
+}
+
+void Ticket::CloseTicket()
+{
+	ticketStatus = "close";
+}
+
 
 
 int main()
 {
 
+	Ticket one;
 	
-    return 0;
+	one.CaptureTicket();
+	one.ShowTicket();
+	one.CloseTicket();
+	return 0;
 }
 
