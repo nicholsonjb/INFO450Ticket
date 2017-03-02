@@ -11,11 +11,12 @@ class Ticket
 	static int IDGenerator;
 	int ID;
 	string ticketStatus;
-	string ticketIssueType;
 	string ticketPriority;
+	string ticketIssueType;
+	string issueType;
 	int usersImpacted;
-	char name[50];
-	char ticketDescription[500];
+	string name;
+	string ticketDescription;
 public:
 
 	Ticket();
@@ -45,32 +46,59 @@ int Ticket::getID()
 void Ticket::CaptureTicket()
 {
 	cout << "Enter Customer Name: " << endl;
-	gets_s(name);
+	getline(cin,name);
 	cout << "Issue type: Issue Type? S=Server, A=Application, C=aCcess " << endl;
 	getline(cin,ticketIssueType);
+		if (ticketIssueType == "S" || ticketIssueType =="s")
+		{
+			issueType = "Server";
+		}
+		if (ticketIssueType == "A" || ticketIssueType == "a")
+		{
+			issueType = "Application";
+		}
+		if (ticketIssueType == "C" || ticketIssueType == "c")
+		{
+			issueType = "Access";
+		}
+
 	cout << "Description of Issue? " << endl;
-	gets_s(ticketDescription);
+	cout << issueType << endl;
+	getline(cin,ticketDescription);
+	
 	cout << "How many users impacted? " << endl;
 	cin >> usersImpacted;
 		if (usersImpacted < 10)
 		{
 			ticketPriority = "Low";
 		}
-	if (usersImpacted >= 10 && usersImpacted < 50)
-	{
+		if (usersImpacted >= 10 && usersImpacted < 50)
+		{
 		ticketPriority = "MED";
-	}
-	if (usersImpacted < 50)
-	{
+		}
+		if (usersImpacted >= 50)
+		{
 		ticketPriority = "HIGH";
-	}
+		}
 	cout << "Ticket status: " << ticketStatus << endl;
-	cout << "Your ID number is: " << ID << endl;
+	cout << "Your issue ID is : " << ID << endl;
+	cout << "--------------------------\n";
+	cin.clear();
+	cin.ignore();
 }
 
 //Method of TicketDisplay
 void Ticket::ShowTicket()
 {
+	cout << "Ticket Listing: " << endl;
+	cout << "Ticket ID: " << ID << endl;
+	cout << "Type: " << issueType <<endl;
+	cout << "Status: " << ticketStatus << endl;
+	cout << "Description: " <<  ticketDescription << endl;
+	cout << "User: " << name << endl;
+	cout << "Users Impacted: " << usersImpacted << endl;
+	cout << "Priroity: " << ticketPriority << endl;
+
 	
 }
 
@@ -83,12 +111,12 @@ void Ticket::CloseTicket()
 
 int main()
 {
-
-	Ticket one;
+	const int TICKETNUMBERS = 100;
+	Ticket systemTickets[TICKETNUMBERS];
 	
-	one.CaptureTicket();
-	one.ShowTicket();
-	one.CloseTicket();
+	systemTickets[TICKETNUMBERS].CaptureTicket();
+	systemTickets[TICKETNUMBERS].ShowTicket();
+	/*systemTickets[0].CloseTicket();*/
 	return 0;
 }
 
