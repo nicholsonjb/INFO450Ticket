@@ -4,6 +4,7 @@
 #include "stdafx.h"
 #include <string>
 #include <iostream>
+#include <stdio.h>
 using namespace std;
 
 class Ticket
@@ -47,7 +48,9 @@ int Ticket::getID()
 void Ticket::CaptureTicket()
 {
 	
-		
+	
+
+
 	cout << "Enter Customer Name: " << endl;
 	getline(cin,name);
 	cout << "Issue type: Issue Type? S=Server, A=Application, C=aCcess " << endl;
@@ -87,7 +90,6 @@ void Ticket::CaptureTicket()
 	cout << "--------------------------\n\n";
 	
 	
-	
 }
 
 //Method of TicketDisplay
@@ -110,41 +112,45 @@ void Ticket::ShowTicket()
 
 void Ticket::CloseTicket()
 {
-	ticketStatus = "close";
+	ticketStatus = "closed";
+	cout << "Ticket number " << ID <<" is " << ticketStatus << endl;
 }
 
 
-const int MAXTICKETS = 100;
-int totalTickets = 0;
-char ans;
+
 
 int main()
 {
+	const int MAXTICKETS = 100;
+	char ans;
+	Ticket myTickets[MAXTICKETS];
+	int totalTickets = 0;
+	totalTickets++;
 	
-	Ticket systemTickets[MAXTICKETS];
-	
-	 
-	 do {
-		 cout << "Open new ticket ? enter Y to continue " << endl;
-		 cin >> ans;
-			totalTickets++;
-			cin.clear();
-			cin.ignore();
-			
+	do {
+		cout << "Open new ticket ? enter Y to continue " << endl;
+		cin >> ans;
+		cin.clear();
+		cin.ignore(2, '\n');
+
 		
-	for ( int i = 0; i < totalTickets ; i++ )
+	for ( int i = 0; i < totalTickets; i++ )
 		 { 	
-		 systemTickets[i].CaptureTicket();
+		 myTickets[i].CaptureTicket();
+		
 		 }
 		
-		 for (int i = 0; i < totalTickets ; i++)
+		 for (int i = 0; i < totalTickets; i++)
 		 {
-			 systemTickets[i].ShowTicket();
+			 myTickets[i].ShowTicket();
+			 
 		 }
-		 systemTickets[0].CloseTicket();
+		
 		 
-	 } while (ans != 'Y' || ans != 'y');
 		 
+} while (ans != 'Y' && ans != 'y');
+
+	myTickets[0].CloseTicket();
 	 
 	return 0;
 }
