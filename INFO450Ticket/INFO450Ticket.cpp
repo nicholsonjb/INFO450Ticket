@@ -149,8 +149,6 @@ int main()
 				  
 			}
 			
-		
-				
 			myTickets[MAXTICKETS].ShowTicket();
 			
 		
