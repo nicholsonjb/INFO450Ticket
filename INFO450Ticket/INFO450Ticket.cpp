@@ -128,7 +128,7 @@ char answer;
 int tickets = 0;
 int main()
 {
-	const int MAXTICKETS = 2;
+	const int MAXTICKETS = 100;
 	
 	
 
