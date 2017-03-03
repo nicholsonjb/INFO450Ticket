@@ -26,6 +26,7 @@ public:
 	void CaptureTicket();
 	void ShowTicket();
 	void CloseTicket();
+	bool continueTicket();
 
 
 };
@@ -48,14 +49,15 @@ int Ticket::getID()
 void Ticket::CaptureTicket()
 {
 	
-	
-
-	cout << "Enter Customer Name: " << endl;
-	getline(cin,name);
-	cin.clear();
-	cout << "Issue type: Issue Type? S=Server, A=Application, C=aCcess " << endl;
-	getline(cin,ticketIssueType);
-		if (ticketIssueType == "S" || ticketIssueType =="s")
+	while (continueTicket()) 
+	{
+		cin.clear();
+		cin.ignore();
+		cout << "Enter Customer Name: " << endl;
+		getline(cin, name);
+		cout << "Issue type: Issue Type? S=Server, A=Application, C=aCcess " << endl;
+		getline(cin, ticketIssueType);
+		if (ticketIssueType == "S" || ticketIssueType == "s")
 		{
 			issueType = "Server";
 		}
@@ -68,29 +70,29 @@ void Ticket::CaptureTicket()
 			issueType = "Access";
 		}
 
-	cout << "Description of Issue? " << endl;
-	cout << issueType << endl;
-	getline(cin,ticketDescription);
-	
-	cout << "How many users impacted? " << endl;
-	cin >> usersImpacted;
+		cout << "Description of Issue? " << endl;
+		cout << issueType << endl;
+		getline(cin, ticketDescription);
+
+		cout << "How many users impacted? " << endl;
+		cin >> usersImpacted;
 		if (usersImpacted < 10)
 		{
 			ticketPriority = "Low";
 		}
 		if (usersImpacted >= 10 && usersImpacted < 50)
 		{
-		ticketPriority = "MED";
+			ticketPriority = "MED";
 		}
 		if (usersImpacted >= 50)
 		{
-		ticketPriority = "HIGH";
+			ticketPriority = "HIGH";
 		}
-	cout << "Your issue ID is : " << ID << endl;
-	cin.clear();
-	cin.ignore();
-	cout << "--------------------------\n\n";
-	
+		cout << "Your issue ID is : " << ID << endl;
+		cout << "--------------------------\n\n";
+		cin.clear();
+		cin.ignore();
+	}
 	
 }
 
@@ -120,12 +122,16 @@ void Ticket::CloseTicket()
 	cin.ignore();
 }
 
+//Method  to continue
+bool Ticket::continueTicket()
+{
 
-//declare variables
+	cout << "Open new ticket?  enter Y to continue Press. \n"
+		<< "Or press 0 to stop: \n";
+	return (cin.get() != '0');
 
-//int numTickets = 0;
-char answer;
-int tickets = 0;
+}
+
 
 int main()
 {
@@ -133,15 +139,7 @@ int main()
 	
 	const int MAXTICKETS = 100;
 	Ticket myTickets[MAXTICKETS]; //Declare myTickets array
-
-
-
-
 	
-		cout << "Open new ticket? Press Y to continue or N to Exit " << endl;
-		cin >> answer;
-		cin.clear();
-		cin.ignore();
 	
 			for (int i = 0; i < MAXTICKETS;i++)
 			{ 
