@@ -141,9 +141,10 @@ int main()
 	Ticket myTickets[MAXTICKETS]; //Declare myTickets array
 	
 	
-			for (int i = 0; i < MAXTICKETS;i++)
-			{ 
-			myTickets[i].CaptureTicket();
+	for (int i = 0; i < MAXTICKETS; i++)
+	{
+		myTickets[i].CaptureTicket();
+
 			myTickets[i].ShowTicket();
 			myTickets[0].CloseTicket();
 			}
