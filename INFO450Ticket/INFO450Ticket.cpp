@@ -51,7 +51,11 @@ void Ticket::CaptureTicket()
 	
 	
 
-	
+	do
+	{
+	cout << "Open new ticket? Press Y to continue " << endl;
+	getline(cin, answer);
+		
 	cout << "Enter Customer Name: " << endl;
 	getline(cin,name);
 	cin.clear();
@@ -89,8 +93,10 @@ void Ticket::CaptureTicket()
 		ticketPriority = "HIGH";
 		}
 	cout << "Your issue ID is : " << ID << endl;
+	cin.clear();
+	cin.ignore();
 	cout << "--------------------------\n\n";
-	
+	} while (answer == "Y");
 	
 }
 
@@ -126,28 +132,29 @@ void Ticket::CloseTicket()
 //int numTickets = 0;
 char answer;
 int tickets = 0;
+
 int main()
 {
+
+	
 	const int MAXTICKETS = 100;
+	Ticket myTickets[MAXTICKETS]; //Declare myTickets array
 	
 	
-
-	Ticket myTickets[MAXTICKETS];
-	/*cout << "Open new ticket? Press Y to continue " << endl;
-	cin >> answer;
-	cin.clear();
-	cin.ignore()*/;
-
-	
-
-		for (int i = 0; i < MAXTICKETS; i++)
-		{ 
-			myTickets[i].CaptureTicket();
-			myTickets[i].ShowTicket();
-			myTickets[0].CloseTicket();
-			
-		}
 		
+
+			for (int i = 0; i < myTickets[i].getID(); i++)
+			{
+				  myTickets[i].CaptureTicket();
+				  
+			}
+			
+		
+				
+			myTickets[MAXTICKETS].ShowTicket();
+			
+		
+			/*myTickets[0].CloseTicket();*/
 	
 	
 
