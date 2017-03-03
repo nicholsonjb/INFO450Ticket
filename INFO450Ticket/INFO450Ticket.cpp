@@ -11,7 +11,6 @@ class Ticket
 {
 	
 	static int IDGenerator;
-	char answer;
 	int ID;
 	string ticketStatus;
 	string ticketPriority;
@@ -51,11 +50,6 @@ void Ticket::CaptureTicket()
 	
 	
 
-	do
-	{
-	cout << "Open new ticket? Press Y to continue or N to Exit " << endl;
-	cin >> answer;
-		
 	cout << "Enter Customer Name: " << endl;
 	getline(cin,name);
 	cin.clear();
@@ -96,7 +90,7 @@ void Ticket::CaptureTicket()
 	cin.clear();
 	cin.ignore();
 	cout << "--------------------------\n\n";
-	} while ((answer != 'n') && (answer != 'N'));
+	
 	
 }
 
@@ -136,24 +130,25 @@ int tickets = 0;
 int main()
 {
 
-	static int i  = 0;
+	
 	const int MAXTICKETS = 100;
 	Ticket myTickets[MAXTICKETS]; //Declare myTickets array
-	
-	
-		
 
-			for ( i = 0; i < myTickets[i].getID(); i++)
-			{
-				  myTickets[i].CaptureTicket();
-				  
-			}
-			
-			myTickets[i].ShowTicket();
-			
-		
-			/*myTickets[0].CloseTicket();*/
+
+
+
 	
+		cout << "Open new ticket? Press Y to continue or N to Exit " << endl;
+		cin >> answer;
+		cin.clear();
+		cin.ignore();
+	
+			for (int i = 0; i < MAXTICKETS;i++)
+			{ 
+			myTickets[i].CaptureTicket();
+			myTickets[i].ShowTicket();
+			myTickets[0].CloseTicket();
+			}
 	
 
 	return 0;
