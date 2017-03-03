@@ -11,6 +11,7 @@ class Ticket
 {
 	
 	static int IDGenerator;
+	string answer;
 	int ID;
 	string ticketStatus;
 	string ticketPriority;
@@ -50,9 +51,10 @@ void Ticket::CaptureTicket()
 	
 	
 
-
+	
 	cout << "Enter Customer Name: " << endl;
 	getline(cin,name);
+	cin.clear();
 	cout << "Issue type: Issue Type? S=Server, A=Application, C=aCcess " << endl;
 	getline(cin,ticketIssueType);
 		if (ticketIssueType == "S" || ticketIssueType =="s")
@@ -114,43 +116,40 @@ void Ticket::CloseTicket()
 {
 	ticketStatus = "closed";
 	cout << "Ticket number " << ID <<" is " << ticketStatus << endl;
+	cin.clear();
+	cin.ignore();
 }
 
 
+//declare variables
 
-
+//int numTickets = 0;
+char answer;
+int tickets = 0;
 int main()
 {
-	const int MAXTICKETS = 100;
-	char ans;
-	Ticket myTickets[MAXTICKETS];
-	int totalTickets = 0;
-	totalTickets++;
+	const int MAXTICKETS = 2;
 	
-	do {
-		cout << "Open new ticket ? enter Y to continue " << endl;
-		cin >> ans;
-		cin.clear();
-		cin.ignore(2, '\n');
+	
 
-		
-	for ( int i = 0; i < totalTickets; i++ )
-		 { 	
-		 myTickets[i].CaptureTicket();
-		
-		 }
-		
-		 for (int i = 0; i < totalTickets; i++)
-		 {
-			 myTickets[i].ShowTicket();
-			 
-		 }
-		
-		 
-		 
-} while (ans != 'Y' && ans != 'y');
+	Ticket myTickets[MAXTICKETS];
+	/*cout << "Open new ticket? Press Y to continue " << endl;
+	cin >> answer;
+	cin.clear();
+	cin.ignore()*/;
 
-	myTickets[0].CloseTicket();
-	 
+	
+
+		for (int i = 0; i < MAXTICKETS; i++)
+		{ 
+			myTickets[i].CaptureTicket();
+			myTickets[i].ShowTicket();
+			myTickets[0].CloseTicket();
+			
+		}
+		
+	
+	
+
 	return 0;
 }
