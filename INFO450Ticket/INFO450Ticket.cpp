@@ -26,7 +26,7 @@ public:
 	void CaptureTicket();
 	void ShowTicket();
 	void CloseTicket();
-	/*bool continueTicket();*/
+	bool continueTicket();
 
 
 };
@@ -48,15 +48,15 @@ int Ticket::getID()
 //Metod to CaptureTicket Info
 void Ticket::CaptureTicket()
 {
-	char ans;
+	
 	
 
-	do 
+	while (continueTicket())
 	{	
-		cout << "Open new ticket?  enter Y to continue Press. " << endl;
-		cin.get(ans);
-		cin.ignore();
 		
+		
+		cin.ignore();
+
 		cout << "Enter Customer Name:" << endl;
 		getline(cin, name);
 
@@ -96,11 +96,13 @@ void Ticket::CaptureTicket()
 			ticketPriority = "HIGH";
 		}
 
-		cin.ignore();
+		
 		cout << "Your issue ID is: " << ID << endl;
+		cin.clear();
+		cin.ignore();
 		cout << "--------------------------" << endl;
 		
-	} while (ans !='n' && ans !='n');
+	}
 	
 }
 
@@ -131,15 +133,15 @@ void Ticket::CloseTicket()
 }
 
 //Method  to continue
-//bool Ticket::continueTicket()
-//{
-//
-//	cout << "Open new ticket?  enter Y to continue Press. \n"
-//		<< "Or press 0 to stop: \n";
-//	
-//	return (cin.get() != '0');
-//	
-//}
+bool Ticket::continueTicket()
+{
+
+	cout << "Open new ticket?  enter Y to continue Press. \n"
+		<< "Or press 0 to stop: \n";
+	
+	return (cin.get() != '0');
+	
+}
 
 
 int main()
@@ -147,19 +149,16 @@ int main()
 
 	
 	const int MAXTICKETS = 100;
-	Ticket myTickets[MAXTICKETS]; //Declare myTickets array
+	Ticket  myTickets[MAXTICKETS]; //Declare myTickets array
 	
 	
 	for (int i = 0; i < MAXTICKETS; i++)
 	{
 		myTickets[i].CaptureTicket();
-	}
-	for (int i = 0; i < MAXTICKETS; i++)
-	{
 		myTickets[i].ShowTicket();
-		myTickets[0].CloseTicket();
+		
 	}
-	
-
+	/*myTickets[0].CloseTicket();
+*/
 	return 0;
 }
