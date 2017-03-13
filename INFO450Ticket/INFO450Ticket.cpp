@@ -144,18 +144,18 @@ int main()
 
 	int i = 0;
 	const int MAXTICKETS = 100;
-	string newTicket;
+	char newTicket;
 	Ticket  myTickets[MAXTICKETS]; //Declare myTickets array
 	
 	
 	do {
 		
 		cout << "Open new ticket? enter Y to continue" << endl;
-		getline(cin, newTicket);
+		cin >> newTicket;
 		myTickets[i].CaptureTicket();
 		
 		
-	} while ((newTicket != "Y" && newTicket !="y") || i < MAXTICKETS);
+	} while ((newTicket != 'Y' && newTicket !='y') || i < MAXTICKETS);
 	
 
 	for (int i = 0; i < MAXTICKETS; i++)
