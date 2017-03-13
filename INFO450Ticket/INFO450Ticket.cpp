@@ -19,6 +19,7 @@ class Ticket
 	int usersImpacted;
 	string name;
 	string ticketDescription;
+	
 public:
 
 	Ticket();
@@ -26,7 +27,7 @@ public:
 	void CaptureTicket();
 	void ShowTicket();
 	void CloseTicket();
-	bool continueTicket();
+	//bool continueTicket();
 
 
 };
@@ -49,15 +50,9 @@ int Ticket::getID()
 void Ticket::CaptureTicket()
 {
 	
-	
-
-	while (continueTicket())
-	{	
 		
-		
-		cin.ignore();
 
-		cout << "Enter Customer Name:" << endl;
+		cout << "What is the Name of the Caller?" << endl;
 		getline(cin, name);
 
 		cout << "Issue type: Issue Type? S=Server, A=Application, C=aCcess" << endl;
@@ -101,8 +96,8 @@ void Ticket::CaptureTicket()
 		cin.clear();
 		cin.ignore();
 		cout << "--------------------------" << endl;
-		
-	}
+	
+	
 	
 }
 
@@ -133,31 +128,41 @@ void Ticket::CloseTicket()
 }
 
 //Method  to continue
-bool Ticket::continueTicket()
-{
-
-	cout << "Open new ticket?  enter Y to continue Press. \n"
-		<< "Or press 0 to stop: \n";
-	
-	return (cin.get() != '0');
-	
-}
+//bool Ticket::continueTicket()
+//{
+//
+//	cout << "Open new ticket?  enter Y to continue Press. \n"
+//		<< "Or press 0 to stop: \n";
+//	
+//	return (cin.get() != '0');
+//	
+//}
 
 
 int main()
 {
 
-	
+	int i = 0;
 	const int MAXTICKETS = 100;
+	string newTicket;
 	Ticket  myTickets[MAXTICKETS]; //Declare myTickets array
 	
 	
+	do {
+		
+		cout << "Open new ticket? enter Y to continue" << endl;
+		getline(cin, newTicket);
+		myTickets[i].CaptureTicket();
+		
+		
+	} while ((newTicket != "Y" && newTicket !="y") || i < MAXTICKETS);
+	
+
 	for (int i = 0; i < MAXTICKETS; i++)
 	{
-		myTickets[i].CaptureTicket();
 		myTickets[i].ShowTicket();
-		
 	}
+	
 	/*myTickets[0].CloseTicket();
 */
 	return 0;
