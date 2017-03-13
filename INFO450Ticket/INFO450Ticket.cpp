@@ -141,24 +141,24 @@ void Ticket::CloseTicket()
 
 int main()
 {
-
-	int x = 0;
+	
+	int newTickets = 0;
 	const int MAXTICKETS = 100;
-	string newTicket;
+	char choice;
 	Ticket  myTickets[MAXTICKETS]; //Declare myTickets array
 	
 	
-	do {
-		
-		cout << "Open new ticket? enter Y to continue" << endl;
-		getline(cin, newTicket);
-		myTickets[x].CaptureTicket();
-		x++;
-		
-	} while ((newTicket != "Y" && newTicket != "y" ) || (x < MAXTICKETS));
-	
+	do{
 
-	for (int i = 0; i < MAXTICKETS; i++)
+		
+		myTickets[newTickets].CaptureTicket();
+		newTickets++;
+		cout << "Do you want to open another ticket? Y/N" << endl;
+		cin >> choice;
+		
+	} while (choice == 'Y');
+	
+	for (int i = 0; i < newTickets; i++)
 	{
 		myTickets[i].ShowTicket();
 	}
