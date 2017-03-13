@@ -163,7 +163,7 @@ int main()
 		myTickets[i].ShowTicket();
 	}
 	
-	/*myTickets[0].CloseTicket();
-*/
+	myTickets[0].CloseTicket();
+
 	return 0;
 }
