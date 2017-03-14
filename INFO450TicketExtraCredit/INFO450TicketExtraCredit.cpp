@@ -16,6 +16,7 @@ class Ticket
 {
 	static int IDGenerator;
 	int ID;
+	
 	string ticketStatus;
 	string ticketPriority;
 	string ticketIssueType;
@@ -31,6 +32,7 @@ public:
 	void CaptureTicket();
 	void ShowTicket();
 	void CloseTicket();
+	void displaySummary();
 };
 
 //Ticket IDGenerator
@@ -50,23 +52,30 @@ int Ticket::getID()
 //Method to CaptureTicket Info
 void Ticket::CaptureTicket()
 {
+
+	static int i = 0;
+
 	cout << "What is the Name of the Caller?" << endl;
 	getline(cin, name);
 
 	cout << "Issue type: Issue Type? S=Server, A=Application, C=aCcess" << endl;
-	getline(cin, ticketIssueType);
+	getline(cin,ticketIssueType);
 
-	if (ticketIssueType == "S" || ticketIssueType == "s")
+
+if (ticketIssueType == "S" || ticketIssueType == "s")
 	{
 		issueType = "Server";
+		
 	}
 	if (ticketIssueType == "A" || ticketIssueType == "a")
 	{
 		issueType = "Application";
+		
 	}
 	if (ticketIssueType == "C" || ticketIssueType == "c")
 	{
 		issueType = "Access";
+		
 	}
 
 	cout << "Description of Issue?" << endl;
@@ -79,14 +88,17 @@ void Ticket::CaptureTicket()
 	if (usersImpacted < 10)
 	{
 		ticketPriority = "Low";
+		
 	}
 	if (usersImpacted >= 10 && usersImpacted < 50)
 	{
 		ticketPriority = "MED";
+		
 	}
 	if (usersImpacted >= 50)
 	{
 		ticketPriority = "HIGH";
+		
 	}
 
 
@@ -112,12 +124,20 @@ void Ticket::ShowTicket()
 	cout << "--------------------------\n\n";
 }
 
+//Methoid to Close Ticket
 void Ticket::CloseTicket()
 {
 	ticketStatus = "CLOSED!";
 	cout << "Ticket number " << ID << " is " << ticketStatus << endl;
 }
+//Method to Display Issue Summary and Priority 
+void Ticket::displaySummary()
+{
+	
+	
 
+	
+}
 
 int main()
 {
