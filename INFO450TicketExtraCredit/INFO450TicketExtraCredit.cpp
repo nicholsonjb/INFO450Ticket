@@ -11,7 +11,7 @@
 #include <iostream>
 #include <stdio.h>
 using namespace std;
-
+const int MAXCOUNT = 100;
 class Ticket
 {
 	static int IDGenerator;
@@ -24,7 +24,19 @@ class Ticket
 	int usersImpacted;
 	string name;
 	string ticketDescription;
-	
+	int sumServer[MAXCOUNT];
+	int sumApps[MAXCOUNT];
+	int sumAccess[MAXCOUNT];
+	int sumHigh[MAXCOUNT];
+	int sumLow[MAXCOUNT];
+	int sumMed[MAXCOUNT];
+	int server = 0;
+	int app = 0;
+	int acc = 0;
+	int high = 0;
+	int med = 0;
+	int low = 0;
+
 
 public:
 
@@ -54,12 +66,7 @@ int Ticket::getID()
 void Ticket::CaptureTicket()
 {
 
-	int server = 0;
-	 int app = 0;
-	 int acc = 0;
-	 int high = 0;
-	int med = 0;
-	 int low = 0;
+	
 
 	cout << "What is the Name of the Caller?" << endl;
 	getline(cin, name);
@@ -71,20 +78,26 @@ void Ticket::CaptureTicket()
 if (ticketIssueType == "S" || ticketIssueType == "s")
 	{
 	
-		issueType = "Server";
+		sumServer[server];
 		server++;
+		issueType = "Server";
+		
 		
 	}
 	if (ticketIssueType == "A" || ticketIssueType == "a")
 	{
-		issueType = "Application";
+		sumApps[app];
 		app++;
+		issueType = "Application";
+		
 		
 	}
 	if (ticketIssueType == "C" || ticketIssueType == "c")
 	{
-		issueType = "Access";
+		sumAccess[acc];
 		acc++;
+		issueType = "Access";
+		
 		
 	}
 
@@ -97,19 +110,25 @@ if (ticketIssueType == "S" || ticketIssueType == "s")
 
 	if (usersImpacted < 10)
 	{
-		ticketPriority = "LOW";
+		sumLow[low];
 		low++;
+		ticketPriority = "LOW";
+		
 	}
 	if (usersImpacted >= 10 && usersImpacted < 50)
 	{
-		ticketPriority = "MED";
+		sumMed[med];
 		med++;
+		ticketPriority = "MED";
+		
 		
 	}
 	if (usersImpacted >= 50)
 	{
-		ticketPriority = "HIGH";
+		sumHigh[high];
 		high++;
+		ticketPriority = "HIGH";
+		
 		
 	}
 
@@ -146,6 +165,11 @@ void Ticket::CloseTicket()
 void Ticket::displaySummary()
 {
 	
+	int i = 0;
+	cout << "Server " << sumServer[i]; 
+	sumApps[app];
+	sumAccess[acc]; 
+
 	
 
 	
@@ -167,6 +191,8 @@ int main()
 		cout << "Do you want to open another ticket? Y/N" << endl;
 		cin >> choice;
 	} while (choice == 'Y');
+
+	myTickets->displaySummary();
 
 	for (int i = 0; i < newTickets; i++)
 	{
