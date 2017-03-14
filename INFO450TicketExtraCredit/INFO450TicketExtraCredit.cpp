@@ -24,6 +24,7 @@ class Ticket
 	int usersImpacted;
 	string name;
 	string ticketDescription;
+	
 
 public:
 
@@ -53,7 +54,12 @@ int Ticket::getID()
 void Ticket::CaptureTicket()
 {
 
-	static int i = 0;
+	int server = 0;
+	 int app = 0;
+	 int acc = 0;
+	 int high = 0;
+	int med = 0;
+	 int low = 0;
 
 	cout << "What is the Name of the Caller?" << endl;
 	getline(cin, name);
@@ -64,17 +70,21 @@ void Ticket::CaptureTicket()
 
 if (ticketIssueType == "S" || ticketIssueType == "s")
 	{
+	
 		issueType = "Server";
+		server++;
 		
 	}
 	if (ticketIssueType == "A" || ticketIssueType == "a")
 	{
 		issueType = "Application";
+		app++;
 		
 	}
 	if (ticketIssueType == "C" || ticketIssueType == "c")
 	{
 		issueType = "Access";
+		acc++;
 		
 	}
 
@@ -87,17 +97,19 @@ if (ticketIssueType == "S" || ticketIssueType == "s")
 
 	if (usersImpacted < 10)
 	{
-		ticketPriority = "Low";
-		
+		ticketPriority = "LOW";
+		low++;
 	}
 	if (usersImpacted >= 10 && usersImpacted < 50)
 	{
 		ticketPriority = "MED";
+		med++;
 		
 	}
 	if (usersImpacted >= 50)
 	{
 		ticketPriority = "HIGH";
+		high++;
 		
 	}
 
