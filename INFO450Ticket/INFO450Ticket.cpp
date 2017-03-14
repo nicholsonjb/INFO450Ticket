@@ -1,5 +1,10 @@
 // INFO450Ticket.cpp : Defines the entry point for the console application.
+//Author: James Nicholson
+//Spring 2017
+//Purpose: Write a program  that collects input to track technical support tickets 
+//for issues called into a help center
 //
+
 
 #include "stdafx.h"
 #include <string>
@@ -27,7 +32,6 @@ public:
 	void CaptureTicket();
 	void ShowTicket();
 	void CloseTicket();
-	//bool continueTicket();
 
 
 };
@@ -38,7 +42,7 @@ int Ticket::IDGenerator = 1;
 Ticket::Ticket()
 {
 	ID = IDGenerator++;
-	ticketStatus = "open";
+	ticketStatus = "OPEN";
 }
 
 int Ticket::getID()
@@ -46,7 +50,7 @@ int Ticket::getID()
 	return ID;
 }
 
-//Metod to CaptureTicket Info
+//Method to CaptureTicket Info
 void Ticket::CaptureTicket()
 {
 	
@@ -101,7 +105,7 @@ void Ticket::CaptureTicket()
 	
 }
 
-//Method of TicketDisplay
+//Method to TicketDisplay
 void Ticket::ShowTicket()
 {
 	cout << "--------------------------\n";
@@ -121,22 +125,12 @@ void Ticket::ShowTicket()
 
 void Ticket::CloseTicket()
 {
-	ticketStatus = "closed";
+	ticketStatus = "CLOSED!";
 	cout << "Ticket number " << ID <<" is " << ticketStatus << endl;
-	cin.clear();
-	cin.ignore();
+	
 }
 
-//Method  to continue
-//bool Ticket::continueTicket()
-//{
-//
-//	cout << "Open new ticket?  enter Y to continue Press. \n"
-//		<< "Or press 0 to stop: \n";
-//	
-//	return (cin.get() != '0');
-//	
-//}
+
 
 
 int main()
@@ -147,8 +141,9 @@ int main()
 	char choice;
 	Ticket  myTickets[MAXTICKETS]; //Declare myTickets array
 	
-	
-	do{
+	cout << "Welcome to the Information Help Desk " << endl;
+	cout << "-------------------------------------\n\n";
+	do {
 
 		
 		myTickets[newTickets].CaptureTicket();
