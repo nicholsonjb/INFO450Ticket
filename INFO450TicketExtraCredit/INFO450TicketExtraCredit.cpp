@@ -164,7 +164,7 @@ void Ticket::CloseTicket()
 //Method to Display Issue Summary and Priority 
 void Ticket::displaySummary()
 {
-	
+	cout << "Ticket Issue Summary" << endl;
 	int i = 0;
 	cout << "Server " << sumServer[i]; 
 	sumApps[app];
@@ -190,7 +190,7 @@ int main()
 		newTickets++;
 		cout << "Do you want to open another ticket? Y/N" << endl;
 		cin >> choice;
-	} while (choice == 'Y');
+	} while (toupper(choice) == 'Y');
 
 	myTickets->displaySummary();
 
