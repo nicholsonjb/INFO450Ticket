@@ -186,6 +186,7 @@ int main()
 	cout << "-------------------------------------\n\n";
 	do
 	{
+		
 		myTickets[newTickets].CaptureTicket();
 		newTickets++;
 		cout << "Do you want to open another ticket? Y/N" << endl;
