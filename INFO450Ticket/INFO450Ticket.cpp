@@ -135,7 +135,7 @@ int main()
 		cout << "Do you want to open another ticket? Y/N" << endl;
 		cin >> choice;
 	}
-	while (choice == 'Y');
+	while (toupper(choice) == 'Y');
 
 	for (int i = 0; i < newTickets; i++)
 	{
