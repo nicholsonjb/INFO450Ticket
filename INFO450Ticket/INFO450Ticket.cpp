@@ -137,6 +137,7 @@ int main()
 	}
 	while (toupper(choice) == 'Y');
 
+	cout << "\n";
 	for (int i = 0; i < newTickets; i++)
 	{
 		myTickets[i].ShowTicket();

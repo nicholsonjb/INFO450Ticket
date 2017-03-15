@@ -152,7 +152,7 @@ void Ticket::ShowTicket()
 	cout << "User: " << name << endl;
 	cout << "Users Impacted: " << usersImpacted << endl;
 	cout << "Priroity: " << ticketPriority << endl;
-	cout << "--------------------------\n\n";
+	cout << "--------------------------\n\n" << endl;
 }
 
 //Methoid to Close Ticket
@@ -166,7 +166,7 @@ void Ticket::displaySummary()
 {
 	cout << "Ticket Issue Summary" << endl;
 	int i = 0;
-	cout << "Server " << sumServer[i]; 
+	cout << "Server " << sumServer[i] << endl; 
 	sumApps[app];
 	sumAccess[acc]; 
 
