@@ -24,18 +24,8 @@ class Ticket
 	int usersImpacted;
 	string name;
 	string ticketDescription;
-	int sumServer[MAXCOUNT];
-	int sumApps[MAXCOUNT];
-	int sumAccess[MAXCOUNT];
-	int sumHigh[MAXCOUNT];
-	int sumLow[MAXCOUNT];
-	int sumMed[MAXCOUNT];
-	int server = 0;
-	int app = 0;
-	int acc = 0;
-	int high = 0;
-	int med = 0;
-	int low = 0;
+	
+
 
 
 public:
@@ -66,8 +56,6 @@ int Ticket::getID()
 void Ticket::CaptureTicket()
 {
 
-	
-
 	cout << "What is the Name of the Caller?" << endl;
 	getline(cin, name);
 
@@ -77,28 +65,22 @@ void Ticket::CaptureTicket()
 
 if (ticketIssueType == "S" || ticketIssueType == "s")
 	{
-	
-		sumServer[server];
-		server++;
+		
 		issueType = "Server";
 		
 		
 	}
 	if (ticketIssueType == "A" || ticketIssueType == "a")
 	{
-		sumApps[app];
-		app++;
+	
 		issueType = "Application";
 		
 		
 	}
 	if (ticketIssueType == "C" || ticketIssueType == "c")
 	{
-		sumAccess[acc];
-		acc++;
 		issueType = "Access";
-		
-		
+			
 	}
 
 	cout << "Description of Issue?" << endl;
@@ -110,23 +92,20 @@ if (ticketIssueType == "S" || ticketIssueType == "s")
 
 	if (usersImpacted < 10)
 	{
-		sumLow[low];
-		low++;
+		
 		ticketPriority = "LOW";
 		
 	}
 	if (usersImpacted >= 10 && usersImpacted < 50)
 	{
-		sumMed[med];
-		med++;
+	
 		ticketPriority = "MED";
 		
 		
 	}
 	if (usersImpacted >= 50)
 	{
-		sumHigh[high];
-		high++;
+		
 		ticketPriority = "HIGH";
 		
 		
@@ -142,9 +121,7 @@ if (ticketIssueType == "S" || ticketIssueType == "s")
 //Method to TicketDisplay
 void Ticket::ShowTicket()
 {
-	cout << "--------------------------\n";
-	cout << "Ticket Listing: " << endl;
-	cout << "--------------------------\n\n";
+	
 	cout << "Ticket ID: " << ID << endl;
 	cout << "Type: " << issueType << endl;
 	cout << "Status: " << ticketStatus << endl;
@@ -164,15 +141,9 @@ void Ticket::CloseTicket()
 //Method to Display Issue Summary and Priority 
 void Ticket::displaySummary()
 {
-	cout << "Ticket Issue Summary" << endl;
-	int i = 0;
-	cout << "Server " << sumServer[i] << endl; 
-	sumApps[app];
-	sumAccess[acc]; 
+	//set and get
+	int 
 
-	
-
-	
 }
 
 int main()
