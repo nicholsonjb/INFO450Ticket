@@ -191,9 +191,14 @@ int main()
 		newTickets++;
 		cout << "Do you want to open another ticket? Y/N" << endl;
 		cin >> choice;
+		cin.ignore();
 	} while (toupper(choice) == 'Y');
 
 	myTickets->displaySummary();
+
+	cout << "\n--------------------------\n";
+	cout << "Ticket Listing: " << endl;
+	cout << "--------------------------\n\n";
 
 	for (int i = 0; i < newTickets; i++)
 	{
