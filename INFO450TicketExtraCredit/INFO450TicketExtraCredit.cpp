@@ -140,6 +140,8 @@ void Ticket::CloseTicket()
 //Method to Display Issue Summary and Priority 
 string Ticket::getTicketPriority()
 {
+
+
 	return ticketPriority;
 	
 }
@@ -153,6 +155,10 @@ string Ticket::getTicketType()
 int main()
 {
 	int newTickets = 0;
+	int serverTickets[3] = { 0,0,0 };
+	int appTickets[3] = { 0,0,0 };
+	int accTickets[3] = { 0,0,0 };
+
 	const int MAXTICKETS = 100;
 	char choice;
 	Ticket myTickets[MAXTICKETS]; //Declare myTickets array
@@ -169,12 +175,15 @@ int main()
 		cin.ignore();
 	} while (toupper(choice) == 'Y');
 
-	myTickets->getTicketPriority();
+
+
 
 	cout << "\n--------------------------\n";
 	cout << "Ticket Listing: " << endl;
 	cout << "--------------------------\n\n";
 
+
+	//display show tickets
 	for (int i = 0; i < newTickets; i++)
 	{
 		myTickets[i].ShowTicket();
