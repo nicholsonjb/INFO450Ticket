@@ -99,7 +99,9 @@ void Ticket::CaptureTicket()
 //Method to TicketDisplay
 void Ticket::ShowTicket()
 {
-
+	cout << "--------------------------\n";
+	cout << "Ticket Listing: " << endl;
+	cout << "--------------------------\n\n";
 	cout << "Ticket ID: " << ID << endl;
 	cout << "Type: " << issueType << endl;
 	cout << "Status: " << ticketStatus << endl;
@@ -132,13 +134,10 @@ int main()
 		newTickets++;
 		cout << "Do you want to open another ticket? Y/N" << endl;
 		cin >> choice;
-		cin.ignore();
 	}
 	while (toupper(choice) == 'Y');
 
-	cout << "\n--------------------------\n";
-	cout << "Ticket Listing: " << endl;
-	cout << "--------------------------\n\n";
+	cout << "\n";
 	for (int i = 0; i < newTickets; i++)
 	{
 		myTickets[i].ShowTicket();
