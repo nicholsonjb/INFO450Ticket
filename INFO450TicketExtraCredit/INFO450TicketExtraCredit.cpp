@@ -24,9 +24,9 @@ class Ticket
 	int usersImpacted;
 	string name;
 	string ticketDescription;
-	int sumServer[MAXCOUNT];
-	int sumApps[MAXCOUNT];
-	int sumAccess[MAXCOUNT];
+	string sumServer[MAXCOUNT];
+	string sumApps[MAXCOUNT];
+	string sumAccess[MAXCOUNT];
 	int sumHigh[MAXCOUNT];
 	int sumLow[MAXCOUNT];
 	int sumMed[MAXCOUNT];
@@ -36,6 +36,14 @@ class Ticket
 	int high = 0;
 	int med = 0;
 	int low = 0;
+	int totalLow;
+	int totalServer;
+	int totalAppilcation;
+	int totalAccess;
+	int totalHigh;
+	int totalMed;
+	
+	
 
 
 public:
@@ -78,7 +86,7 @@ void Ticket::CaptureTicket()
 if (ticketIssueType == "S" || ticketIssueType == "s")
 	{
 	
-		sumServer[server];
+		sumServer[server] = ticketIssueType;
 		server++;
 		issueType = "Server";
 		
@@ -86,7 +94,7 @@ if (ticketIssueType == "S" || ticketIssueType == "s")
 	}
 	if (ticketIssueType == "A" || ticketIssueType == "a")
 	{
-		sumApps[app];
+		sumApps[app] = ticketIssueType;
 		app++;
 		issueType = "Application";
 		
@@ -94,7 +102,7 @@ if (ticketIssueType == "S" || ticketIssueType == "s")
 	}
 	if (ticketIssueType == "C" || ticketIssueType == "c")
 	{
-		sumAccess[acc];
+		sumAccess[acc] = ticketIssueType;
 		acc++;
 		issueType = "Access";
 		
@@ -110,14 +118,14 @@ if (ticketIssueType == "S" || ticketIssueType == "s")
 
 	if (usersImpacted < 10)
 	{
-		sumLow[low];
+		sumLow[low] = totalLow;
 		low++;
 		ticketPriority = "LOW";
 		
 	}
 	if (usersImpacted >= 10 && usersImpacted < 50)
 	{
-		sumMed[med];
+		sumMed[med]= totalMed;
 		med++;
 		ticketPriority = "MED";
 		
@@ -125,7 +133,7 @@ if (ticketIssueType == "S" || ticketIssueType == "s")
 	}
 	if (usersImpacted >= 50)
 	{
-		sumHigh[high];
+		sumHigh[high] = totalHigh;
 		high++;
 		ticketPriority = "HIGH";
 		
@@ -165,11 +173,13 @@ void Ticket::CloseTicket()
 void Ticket::displaySummary()
 {
 	
-	int i = 0;
-	cout << "Server " << sumServer[i]; 
-	sumApps[app];
-	sumAccess[acc]; 
-
+	for (int i = 0; i < server;)
+	{
+	cout << "Server" << sumServer[i] << endl;
+	}
+  /*  cout <<	"Apps" << sumApps[i] << endl;
+	cout << "Access" << sumAccess[i] << endl;
+*/
 	
 
 	
