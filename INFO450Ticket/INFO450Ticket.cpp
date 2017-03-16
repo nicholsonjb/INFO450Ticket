@@ -69,7 +69,6 @@ void Ticket::CaptureTicket()
 		issueType = "Access";
 	}
 	
-
 	cout << "Description of Issue?" << endl;
 	cout << issueType << endl;
 	getline(cin, ticketDescription);
