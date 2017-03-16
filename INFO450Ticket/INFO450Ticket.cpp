@@ -136,9 +136,9 @@ int main()
 	}
 	while (toupper(choice) == 'Y');
 
-	cout << "\n";
 
-	cout << "--------------------------\n";
+
+	cout << "\n--------------------------\n";
 	cout << "Ticket Listing: " << endl;
 	cout << "--------------------------\n\n";
 	for (int i = 0; i < newTickets; i++)
