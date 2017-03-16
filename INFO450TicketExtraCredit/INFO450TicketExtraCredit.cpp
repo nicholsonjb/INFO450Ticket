@@ -12,11 +12,12 @@
 #include <stdio.h>
 using namespace std;
 const int MAXCOUNT = 100;
+
 class Ticket
 {
 	static int IDGenerator;
 	int ID;
-	
+
 	string ticketStatus;
 	string ticketPriority;
 	string ticketIssueType;
@@ -24,10 +25,6 @@ class Ticket
 	int usersImpacted;
 	string name;
 	string ticketDescription;
-	string sumServer[MAXCOUNT];
-	string sumApps[MAXCOUNT];
-	string sumAccess[MAXCOUNT];
-	
 
 
 public:
@@ -38,6 +35,10 @@ public:
 	void ShowTicket();
 	void CloseTicket();
 	void displaySummary();
+
+	//get function
+	string getType();
+	string getPriority();
 };
 
 //Ticket IDGenerator
@@ -57,40 +58,24 @@ int Ticket::getID()
 //Method to CaptureTicket Info
 void Ticket::CaptureTicket()
 {
-
-	
-
 	cout << "What is the Name of the Caller?" << endl;
 	getline(cin, name);
 
 	cout << "Issue type: Issue Type? S=Server, A=Application, C=aCcess" << endl;
-	getline(cin,ticketIssueType);
+	getline(cin, ticketIssueType);
 
 
-if (ticketIssueType == "S" || ticketIssueType == "s")
+	if (ticketIssueType == "S" || ticketIssueType == "s")
 	{
-	
-		sumServer[server] = ticketIssueType;
-		server++;
 		issueType = "Server";
-		
-		
 	}
 	if (ticketIssueType == "A" || ticketIssueType == "a")
 	{
-		sumApps[app] = ticketIssueType;
-		app++;
 		issueType = "Application";
-		
-		
 	}
 	if (ticketIssueType == "C" || ticketIssueType == "c")
 	{
-		sumAccess[acc] = ticketIssueType;
-		acc++;
 		issueType = "Access";
-		
-		
 	}
 
 	cout << "Description of Issue?" << endl;
@@ -102,26 +87,15 @@ if (ticketIssueType == "S" || ticketIssueType == "s")
 
 	if (usersImpacted < 10)
 	{
-		sumLow[low] = totalLow;
-		low++;
 		ticketPriority = "LOW";
-		
 	}
 	if (usersImpacted >= 10 && usersImpacted < 50)
 	{
-		sumMed[med]= totalMed;
-		med++;
 		ticketPriority = "MED";
-		
-		
 	}
 	if (usersImpacted >= 50)
 	{
-		sumHigh[high] = totalHigh;
-		high++;
 		ticketPriority = "HIGH";
-		
-		
 	}
 
 
@@ -153,21 +127,18 @@ void Ticket::CloseTicket()
 	ticketStatus = "CLOSED!";
 	cout << "Ticket number " << ID << " is " << ticketStatus << endl;
 }
-//Method to Display Issue Summary and Priority 
-void Ticket::displaySummary()
-{
-	
-	for (int i = 0; i < server;)
-	{
-	cout << "Server" << sumServer[i] << endl;
-	}
-  /*  cout <<	"Apps" << sumApps[i] << endl;
-	cout << "Access" << sumAccess[i] << endl;
-*/
-	
 
-	
+//Method to Display Issue Summary and Priority 
+string Ticket::getPriority()
+{
+	return ticketPriority;
 }
+
+string Ticket::getType()
+{
+	return issueType;
+}
+
 
 int main()
 {
@@ -175,6 +146,13 @@ int main()
 	const int MAXTICKETS = 100;
 	char choice;
 	Ticket myTickets[MAXTICKETS]; //Declare myTickets array
+
+
+	int serverTickets[3] = {0,0,0,};
+
+
+	int appTickets[3] = {0,0,0};
+	int accTickets[3] = {0,0,0};
 
 	cout << "Welcome to the Information Help Desk " << endl;
 	cout << "-------------------------------------\n\n";
@@ -184,7 +162,8 @@ int main()
 		newTickets++;
 		cout << "Do you want to open another ticket? Y/N" << endl;
 		cin >> choice;
-	} while (choice == 'Y');
+	}
+	while (choice == 'Y');
 
 
 	for (int i = 0; i < newTickets; i++)
