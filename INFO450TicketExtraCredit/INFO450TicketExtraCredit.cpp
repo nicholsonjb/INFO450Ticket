@@ -17,7 +17,7 @@ class Ticket
 {
 	static int IDGenerator;
 	int ID;
-
+	
 	string ticketStatus;
 	string ticketPriority;
 	string ticketIssueType;
@@ -108,9 +108,7 @@ void Ticket::CaptureTicket()
 //Method to TicketDisplay
 void Ticket::ShowTicket()
 {
-	cout << "--------------------------\n";
-	cout << "Ticket Listing: " << endl;
-	cout << "--------------------------\n\n";
+	
 	cout << "Ticket ID: " << ID << endl;
 	cout << "Type: " << issueType << endl;
 	cout << "Status: " << ticketStatus << endl;
@@ -146,11 +144,8 @@ int main()
 	const int MAXTICKETS = 100;
 	char choice;
 	Ticket myTickets[MAXTICKETS]; //Declare myTickets array
-
-
+	
 	int serverTickets[3] = {0,0,0,};
-
-
 	int appTickets[3] = {0,0,0};
 	int accTickets[3] = {0,0,0};
 
@@ -162,10 +157,15 @@ int main()
 		newTickets++;
 		cout << "Do you want to open another ticket? Y/N" << endl;
 		cin >> choice;
+		cin.ignore();
 	}
 	while (choice == 'Y');
 
+	
 
+	cout << "\n--------------------------\n";
+	cout << "Ticket Listing: " << endl;
+	cout << "--------------------------\n\n";
 	for (int i = 0; i < newTickets; i++)
 	{
 		myTickets[i].ShowTicket();
