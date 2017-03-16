@@ -16,6 +16,7 @@ class Ticket
 {
 	static int IDGenerator;
 	int ID;
+	
 	string ticketStatus;
 	string ticketPriority;
 	string ticketIssueType;
@@ -23,8 +24,26 @@ class Ticket
 	int usersImpacted;
 	string name;
 	string ticketDescription;
+	string sumServer[MAXCOUNT];
+	string sumApps[MAXCOUNT];
+	string sumAccess[MAXCOUNT];
+	int sumHigh[MAXCOUNT];
+	int sumLow[MAXCOUNT];
+	int sumMed[MAXCOUNT];
+	int server = 0;
+	int app = 0;
+	int acc = 0;
+	int high = 0;
+	int med = 0;
+	int low = 0;
+	int totalLow;
+	int totalServer;
+	int totalAppilcation;
+	int totalAccess;
+	int totalHigh;
+	int totalMed;
 	
-
+	
 
 
 public:
@@ -35,8 +54,6 @@ public:
 	void ShowTicket();
 	void CloseTicket();
 	void displaySummary();
-	string getTicketPriority();
-	string getTicketType();
 };
 
 //Ticket IDGenerator
@@ -57,6 +74,8 @@ int Ticket::getID()
 void Ticket::CaptureTicket()
 {
 
+	
+
 	cout << "What is the Name of the Caller?" << endl;
 	getline(cin, name);
 
@@ -66,23 +85,29 @@ void Ticket::CaptureTicket()
 
 if (ticketIssueType == "S" || ticketIssueType == "s")
 	{
-		
+	
+		sumServer[server] = ticketIssueType;
+		server++;
 		issueType = "Server";
 		
 		
 	}
 	if (ticketIssueType == "A" || ticketIssueType == "a")
 	{
-	
+		sumApps[app] = ticketIssueType;
+		app++;
 		issueType = "Application";
 		
 		
 	}
 	if (ticketIssueType == "C" || ticketIssueType == "c")
 	{
+		sumAccess[acc] = ticketIssueType;
+		acc++;
 		issueType = "Access";
+		
+		
 	}
-	
 
 	cout << "Description of Issue?" << endl;
 	cout << issueType << endl;
@@ -93,23 +118,28 @@ if (ticketIssueType == "S" || ticketIssueType == "s")
 
 	if (usersImpacted < 10)
 	{
-		
+		sumLow[low] = totalLow;
+		low++;
 		ticketPriority = "LOW";
 		
 	}
 	if (usersImpacted >= 10 && usersImpacted < 50)
 	{
-	
+		sumMed[med]= totalMed;
+		med++;
 		ticketPriority = "MED";
 		
 		
 	}
 	if (usersImpacted >= 50)
 	{
+		sumHigh[high] = totalHigh;
+		high++;
+		ticketPriority = "HIGH";
 		
-		ticketPriority = "HIGH";	
+		
 	}
-	
+
 
 	cout << "Your issue ID is: " << ID << endl;
 	cin.clear();
@@ -120,7 +150,9 @@ if (ticketIssueType == "S" || ticketIssueType == "s")
 //Method to TicketDisplay
 void Ticket::ShowTicket()
 {
-	
+	cout << "--------------------------\n";
+	cout << "Ticket Listing: " << endl;
+	cout << "--------------------------\n\n";
 	cout << "Ticket ID: " << ID << endl;
 	cout << "Type: " << issueType << endl;
 	cout << "Status: " << ticketStatus << endl;
@@ -128,7 +160,7 @@ void Ticket::ShowTicket()
 	cout << "User: " << name << endl;
 	cout << "Users Impacted: " << usersImpacted << endl;
 	cout << "Priroity: " << ticketPriority << endl;
-	cout << "--------------------------\n\n" << endl;
+	cout << "--------------------------\n\n";
 }
 
 //Methoid to Close Ticket
@@ -138,27 +170,24 @@ void Ticket::CloseTicket()
 	cout << "Ticket number " << ID << " is " << ticketStatus << endl;
 }
 //Method to Display Issue Summary and Priority 
-string Ticket::getTicketPriority()
+void Ticket::displaySummary()
 {
+	
+	for (int i = 0; i < server;)
+	{
+	cout << "Server" << sumServer[i] << endl;
+	}
+  /*  cout <<	"Apps" << sumApps[i] << endl;
+	cout << "Access" << sumAccess[i] << endl;
+*/
+	
 
-
-	return ticketPriority;
 	
 }
-
-string Ticket::getTicketType()
-{
-	return ticketIssueType;
-}
-
 
 int main()
 {
 	int newTickets = 0;
-	int serverTickets[3] = { 0,0,0 };
-	int appTickets[3] = { 0,0,0 };
-	int accTickets[3] = { 0,0,0 };
-
 	const int MAXTICKETS = 100;
 	char choice;
 	Ticket myTickets[MAXTICKETS]; //Declare myTickets array
@@ -167,23 +196,14 @@ int main()
 	cout << "-------------------------------------\n\n";
 	do
 	{
-		
 		myTickets[newTickets].CaptureTicket();
 		newTickets++;
 		cout << "Do you want to open another ticket? Y/N" << endl;
 		cin >> choice;
-		cin.ignore();
-	} while (toupper(choice) == 'Y');
+	} while (choice == 'Y');
 
+	myTickets->displaySummary();
 
-
-
-	cout << "\n--------------------------\n";
-	cout << "Ticket Listing: " << endl;
-	cout << "--------------------------\n\n";
-
-
-	//display show tickets
 	for (int i = 0; i < newTickets; i++)
 	{
 		myTickets[i].ShowTicket();
