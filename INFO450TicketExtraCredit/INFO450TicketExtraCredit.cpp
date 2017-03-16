@@ -27,22 +27,6 @@ class Ticket
 	string sumServer[MAXCOUNT];
 	string sumApps[MAXCOUNT];
 	string sumAccess[MAXCOUNT];
-	int sumHigh[MAXCOUNT];
-	int sumLow[MAXCOUNT];
-	int sumMed[MAXCOUNT];
-	int server = 0;
-	int app = 0;
-	int acc = 0;
-	int high = 0;
-	int med = 0;
-	int low = 0;
-	int totalLow;
-	int totalServer;
-	int totalAppilcation;
-	int totalAccess;
-	int totalHigh;
-	int totalMed;
-	
 	
 
 
@@ -202,7 +186,6 @@ int main()
 		cin >> choice;
 	} while (choice == 'Y');
 
-	myTickets->displaySummary();
 
 	for (int i = 0; i < newTickets; i++)
 	{
