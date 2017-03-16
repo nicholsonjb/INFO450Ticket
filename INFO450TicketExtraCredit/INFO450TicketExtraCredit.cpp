@@ -36,6 +36,8 @@ public:
 	void CloseTicket();
 	void displaySummary();
 
+	
+
 	//get function
 	string getType();
 	string getPriority();
