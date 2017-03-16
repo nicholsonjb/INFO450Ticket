@@ -16,7 +16,6 @@ class Ticket
 {
 	static int IDGenerator;
 	int ID;
-	
 	string ticketStatus;
 	string ticketPriority;
 	string ticketIssueType;
@@ -36,6 +35,8 @@ public:
 	void ShowTicket();
 	void CloseTicket();
 	void displaySummary();
+	string getTicketPriority();
+	string getTicketType();
 };
 
 //Ticket IDGenerator
@@ -80,8 +81,8 @@ if (ticketIssueType == "S" || ticketIssueType == "s")
 	if (ticketIssueType == "C" || ticketIssueType == "c")
 	{
 		issueType = "Access";
-			
 	}
+	
 
 	cout << "Description of Issue?" << endl;
 	cout << issueType << endl;
@@ -106,11 +107,9 @@ if (ticketIssueType == "S" || ticketIssueType == "s")
 	if (usersImpacted >= 50)
 	{
 		
-		ticketPriority = "HIGH";
-		
-		
+		ticketPriority = "HIGH";	
 	}
-
+	
 
 	cout << "Your issue ID is: " << ID << endl;
 	cin.clear();
@@ -139,12 +138,17 @@ void Ticket::CloseTicket()
 	cout << "Ticket number " << ID << " is " << ticketStatus << endl;
 }
 //Method to Display Issue Summary and Priority 
-void Ticket::displaySummary()
+string Ticket::getTicketPriority()
 {
-	//set and get
-	int 
-
+	return ticketPriority;
+	
 }
+
+string Ticket::getTicketType()
+{
+	return ticketIssueType;
+}
+
 
 int main()
 {
@@ -165,7 +169,7 @@ int main()
 		cin.ignore();
 	} while (toupper(choice) == 'Y');
 
-	myTickets->displaySummary();
+	myTickets->getTicketPriority();
 
 	cout << "\n--------------------------\n";
 	cout << "Ticket Listing: " << endl;
