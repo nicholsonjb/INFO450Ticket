@@ -62,16 +62,14 @@ void Ticket::CaptureTicket()
 	}
 	if (ticketIssueType == "A" || ticketIssueType == "a")
 	{
-		issueType = "Application"
+		issueType = "Application";
 	}
 	if (ticketIssueType == "C" || ticketIssueType == "c")
 	{
 		issueType = "Access";
 	}
-	else 
-	{
-		issueType = "Invaild Entry";
-	}
+	
+
 	cout << "Description of Issue?" << endl;
 	cout << issueType << endl;
 	getline(cin, ticketDescription);
